@@ -1,0 +1,8 @@
+FROM node:16-alpine
+RUN mkdir app
+WORKDIR /app
+COPY --chown=node:node package.json /app/
+RUN npm install
+COPY --chown=node:node . /app/
+ENTRYPOINT [ "npm", "run", "start" ]
+CMD [ "chown", "node:node", "node_modules" ]
