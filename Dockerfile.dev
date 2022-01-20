@@ -3,6 +3,6 @@ RUN mkdir app
 WORKDIR /app
 COPY --chown=node:node package.json /app/
 RUN npm install
+RUN chown node:node node_modules
 COPY --chown=node:node . /app/
-ENTRYPOINT [ "npm", "run", "start" ]
-CMD [ "chown", "node:node", "node_modules" ]
+CMD [ "npm", "run", "start" ]
